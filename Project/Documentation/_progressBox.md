@@ -18,6 +18,28 @@ Show Cancel Button | Boolean | Whether a Cancel button should be shown
 
 
 
+#### Example:
+
+```4d
+$x:=cs._progressBox.new("Hello. This is a temporary title."; ""; True)
+$x.titleFontSize:=18
+$x.messageFontSize:=12
+$x.title:="Waiting two seconds..."
+$x.barberPole()
+DELAY PROCESS(Current process; 120)
+For ($i; 1; 100)
+	$x.update($i/100)
+	If ($x.cancelButtonPressed())
+		break
+	End if 
+	$x.message:="Completed "+String($i)+"/100"
+	DELAY PROCESS(Current process; 20)
+End for //$i;1;100
+$x.close()
+```
+
+
+
 ## API
 
 
@@ -31,14 +53,14 @@ Turns the progress indicator into an animation
 ### close()
 
 Closes the progress box
-***This does not prevent you from continuing to interact with the class. Continuing to interact with the class at this point will cause 4D to throw an error.***
+***This may not prevent you from continuing to interact with the class. Continuing to interact with the class at this point will cause 4D to throw an error. The class will attempt to ignore any calls to the instance, if it knows it has been closed.***
 
 
 
 ### closeAll()
 
 Closes all open progress boxes
-***This does not prevent you from continuing to interact with the class. Continuing to interact with the class at this point will cause 4D to throw an error.***
+***This may not prevent you from continuing to interact with the class. Continuing to interact with the class at this point will cause 4D to throw an error. The class will attempt to ignore any calls to the instance, if it knows it has been closed.***
 
 
 
@@ -101,3 +123,15 @@ Sets the size of the text used to display the title (above the progress bar)
 
 * $newPercent is a value between 0 and 1
 * Moves the progress bar 
+
+
+
+
+
+## Private API
+
+
+
+### _notClosed () -> Boolean
+
+If the class knows that it has been closed, returns **False** so that other functions and setters for the class don't throw an error.

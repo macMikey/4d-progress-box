@@ -1,15 +1,15 @@
 Class constructor($title : Variant; $message : Variant; $showCancel : Variant)
-	This:C1470.ID:=Progress New()
-	If (Not:C34(Undefined:C82($title)))
-		This:C1470.title:=$title
+	This.ID:=Progress New()
+	If (Not(Undefined($title)))
+		This.title:=$title
 	End if 
 	
-	If (Not:C34(Undefined:C82($message)))
-		This:C1470.message:=$message
+	If (Not(Undefined($message)))
+		This.message:=$message
 	End if 
 	
-	If (Not:C34(Undefined:C82($showCancel)))
-		This:C1470.cancelButton()
+	If (Not(Undefined($showCancel)))
+		This.cancelButton()
 	End if 
 	
 	// ===============================================================================================================
@@ -20,13 +20,16 @@ Class constructor($title : Variant; $message : Variant; $showCancel : Variant)
 	
 	
 Function barberPole
-	Progress SET PROGRESS(This:C1470.ID; -1)
+	If (This._notClosed())
+		Progress SET PROGRESS(This.ID; -1)
+	End if 
 	// _______________________________________________________________________________________________________________
 	
 	
 	
 Function close
-	Progress QUIT(This:C1470.ID)
+	Progress QUIT(This.ID)
+	This.id:=0
 	// _______________________________________________________________________________________________________________
 	
 	
@@ -38,15 +41,17 @@ Function closeAll
 	
 	
 Function cancelButton($title : Variant)
-	$title:=$title || "Cancel"
-	Progress SET BUTTON TITLE(This:C1470.ID; $title)
-	Progress SET BUTTON ENABLED(This:C1470.ID; True:C214)
+	If (This._notClosed())
+		$title:=$title || "Cancel"
+		Progress SET BUTTON TITLE(This.ID; $title)
+		Progress SET BUTTON ENABLED(This.ID; True)
+	End if 
 	// _______________________________________________________________________________________________________________
 	
 	
 	
 Function cancelButtonPressed()->$bool : Boolean
-	return Progress Stopped(This:C1470.ID)
+	return Progress Stopped(This.ID)
 	
 	
 	
@@ -59,41 +64,64 @@ Function cancelButtonPressed()->$bool : Boolean
 	
 	
 Function set message($message : Text)
-	Progress SET MESSAGE(This:C1470.ID; $message; True:C214)
+	If (This._notClosed())
+		Progress SET MESSAGE(This.ID; $message; True)
+	End if 
 	// _______________________________________________________________________________________________________________
 	
 	
 Function set messageFont($what : Text)
-	Progress SET FONTS(""; $what)
+	If (This._notClosed())
+		Progress SET FONTS(""; $what)
+	End if 
 	// _______________________________________________________________________________________________________________
 	
 	
 	
 Function set messageFontSize($what : Integer)
-	Progress SET FONT SIZES(-1; $what)
+	If (This._notClosed())
+		Progress SET FONT SIZES(-1; $what)
+	End if 
 	// _______________________________________________________________________________________________________________
 	
 	
 	
 Function set title($title : Text)
-	Progress SET TITLE(This:C1470.ID; $title)
+	If (This._notClosed())
+		Progress SET TITLE(This.ID; $title)
+	End if 
 	// _______________________________________________________________________________________________________________
 	
 	
 	
 Function set titleFont($what : Text)
-	Progress SET FONTS($what; "")
+	If (This._notClosed())
+		Progress SET FONTS($what; "")
+	End if 
 	// _______________________________________________________________________________________________________________
 	
 	
 	
 Function set titleFontSize($what : Integer)
-	Progress SET FONT SIZES($what; -1)
+	If (This._notClosed())
+		Progress SET FONT SIZES($what; -1)
+	End if 
 	// _______________________________________________________________________________________________________________
 	
 	
 	
 Function update($newPercent)
-	Progress SET PROGRESS(This:C1470.ID; $newPercent)
+	If (This._notClosed())
+		Progress SET PROGRESS(This.ID; $newPercent)
+	End if 
 	// _______________________________________________________________________________________________________________
 	
+	
+	
+	// ===============================================================================================================
+	// =                                                                                                             =
+	// =                                       P R I V A T E    A P I                                                =
+	// =                                                                                                             =
+	// ===============================================================================================================
+Function _notClosed()
+	return This.ID#0
