@@ -1,6 +1,6 @@
 <!-- Making progress boxes more funner -->
 
-# Class _progressBox
+# Class box
 
 Encapsulates 4d's **Progress Box** commands so they are quicker to deploy
 
@@ -21,7 +21,7 @@ Show Cancel Button | Boolean | Whether a Cancel button should be shown
 #### Example:
 
 ```4d
-$x:=cs._progressBox.new("Hello. This is a temporary title."; ""; True)
+$x:=cs.progress.box.new("Hello. This is a temporary title."; ""; True)
 $x.titleFontSize:=18
 $x.messageFontSize:=12
 $x.title:="Waiting two seconds..."

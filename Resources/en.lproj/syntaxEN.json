@@ -1,0 +1,144 @@
+{
+	"_method_": {},
+	"cs.progress": {
+		"box": {
+			"new()": {
+				"Syntax": "**.new**( *title* : Variant; *message* : Variant; *showCancel* : Variant )",
+				"Params": [
+					[
+						"title",
+						"Variant",
+						"->"
+					],
+					[
+						"message",
+						"Variant",
+						"->"
+					],
+					[
+						"showCancel",
+						"Variant",
+						"->"
+					]
+				],
+				"Summary": ""
+			}
+		}
+	},
+	"box": {
+		"update()": {
+			"Syntax": "**.update**( *newPercent* : Variant )",
+			"Params": [
+				[
+					"newPercent",
+					"Variant",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"set title()": {
+			"Syntax": "**.set title**( *title* : Text )",
+			"Params": [
+				[
+					"title",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"cancelButton()": {
+			"Syntax": "**.cancelButton**( *title* : Variant )",
+			"Params": [
+				[
+					"title",
+					"Variant",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"set messageFont()": {
+			"Syntax": "**.set messageFont**( *what* : Text )",
+			"Params": [
+				[
+					"what",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"set messageFontSize()": {
+			"Syntax": "**.set messageFontSize**( *what* : Integer )",
+			"Params": [
+				[
+					"what",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"set message()": {
+			"Syntax": "**.set message**( *message* : Text )",
+			"Params": [
+				[
+					"message",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"set titleFont()": {
+			"Syntax": "**.set titleFont**( *what* : Text )",
+			"Params": [
+				[
+					"what",
+					"Text",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"cancelButtonPressed()": {
+			"Syntax": "**.cancelButtonPressed**()->bool : Boolean",
+			"Params": [
+				[
+					"bool",
+					"Boolean",
+					"<-"
+				]
+			],
+			"Summary": ""
+		},
+		"set titleFontSize()": {
+			"Syntax": "**.set titleFontSize**( *what* : Integer )",
+			"Params": [
+				[
+					"what",
+					"Integer",
+					"->"
+				]
+			],
+			"Summary": ""
+		},
+		"closeAll()": {
+			"Syntax": "**.closeAll**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"close()": {
+			"Syntax": "**.close**()",
+			"Params": [],
+			"Summary": ""
+		},
+		"barberPole()": {
+			"Syntax": "**.barberPole**()",
+			"Params": [],
+			"Summary": ""
+		}
+	}
+}
