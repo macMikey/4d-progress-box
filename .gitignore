@@ -17,6 +17,10 @@ ehthumbs.db
 Thumbs.db
 
 Resources/[pP]rivate/
-Project/Sources/settings.4DSettings
 
 data.*
+*Match
+
+*journal
+
+*4DD
